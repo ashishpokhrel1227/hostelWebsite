@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+{% if user.is_authenticated %}
+
+<div class="container">
+    <div class="row" style="margin-top: 10px;">
+        <div class="col">
+            <h2>Student Information</h2>
+        </div>
+        <div class="col-md-auto" >
+            <a
+                href="{% url 'addstudent' %}"
+                class='student'
+            >
+                Add Student
+            </a>
+        </div>
+    </div>
+</div>
+<div id='testimonial' class="testimonial" style="margin-bottom: 10px;">
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">Room Type</th>
+                <th scope="col">Joined on</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ student.first_name }} {% if student.middle_name %}{{ student.middle_name }}{% endif %} {{ student.last_name }}</td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.phone}}</td>
+                <td>{{ student.room }}</td>
+                <td>{{ student.entry_on }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+<a class="student" href="{% url 'logout' %}" style="margin: 10px;">Log Out</a>
+{% endblock %}

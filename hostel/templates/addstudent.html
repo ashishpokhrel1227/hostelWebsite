@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+<div id='testimonial' class="d-flex justify-content-center testimonial">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="contact">
+            <h3>Add Student</h3>
+            <form method="post" action="{% url 'student' %}">
+                {% csrf_token %}
+                {{ studentform.first_name }}
+                {{ studentform.middle_name }}
+                {{ studentform.last_name }}
+                {{ studentform.address }}
+                {{ studentform.phone }}
+                {{ studentform.room }}
+                <div class="col-sm-12">
+                    <button class="send" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

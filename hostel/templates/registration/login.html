@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+<div class="container">
+    <span class="hoverle">
+        <a href="{% url 'index' %}"><img src="https://img.icons8.com/pastel-glyph/64/26e07f/circled-left.png"/></a>
+    </span>
+</div>
+<div id='testimonial' class="d-flex justify-content-center testimonial">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="contact">
+            <h3>Login</h3>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="col-sm-12">
+                        <input 
+                            class="contactus" 
+                            placeholder="{{ field.html_name }}" 
+                            type="{{ field.html_name }}"
+                            name="{{ field.html_name }}"
+                        >
+                    </div>
+                {% endfor %}
+                <div class="col-sm-12">
+                    <button class="send" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
