@@ -1,4 +1,3 @@
-db.sqlite3
 hostel/migrations
 hostel/__init__.py
 hostelWeb/__init__.py
